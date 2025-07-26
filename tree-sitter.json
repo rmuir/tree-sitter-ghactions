@@ -2,15 +2,15 @@
   "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
   "grammars": [
     {
-      "name": "actions",
-      "camelcase": "Actions",
+      "name": "ghactions",
+      "camelcase": "GHActions",
       "title": "Github Actions",
-      "scope": "source.actions",
+      "scope": "source.ghactions",
       "file-types": [
-        "actions"
+        "ghactions"
       ],
-      "injection-regex": "^actions$",
-      "class-name": "TreeSitterActions"
+      "injection-regex": "^ghactions$",
+      "class-name": "TreeSitterGHActions"
     }
   ],
   "metadata": {
@@ -25,7 +25,7 @@
       }
     ],
     "links": {
-      "repository": "https://github.com/rmuir/tree-sitter-actions"
+      "repository": "https://github.com/rmuir/tree-sitter-ghactions"
     }
   },
   "bindings": {

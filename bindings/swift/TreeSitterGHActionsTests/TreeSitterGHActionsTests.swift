@@ -1,11 +1,11 @@
 import SwiftTreeSitter
-import TreeSitterActions
+import TreeSitterGHActions
 import XCTest
 
-final class TreeSitterActionsTests: XCTestCase {
+final class TreeSitterGHActionsTests: XCTestCase {
     func testCanLoadGrammar() throws {
         let parser = Parser()
-        let language = Language(language: tree_sitter_actions())
+        let language = Language(language: tree_sitter_ghactions())
         XCTAssertNoThrow(
             try parser.setLanguage(language),
             "Error loading Github Actions grammar")

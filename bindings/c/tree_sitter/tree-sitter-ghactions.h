@@ -1,5 +1,5 @@
-#ifndef TREE_SITTER_ACTIONS_H_
-#define TREE_SITTER_ACTIONS_H_
+#ifndef TREE_SITTER_GHACTIONS_H_
+#define TREE_SITTER_GHACTIONS_H_
 
 typedef struct TSLanguage TSLanguage;
 
@@ -13,4 +13,4 @@ const TSLanguage *tree_sitter_actions(void);
 }
 #endif
 
-#endif // TREE_SITTER_ACTIONS_H_
+#endif // TREE_SITTER_GHACTIONS_H_

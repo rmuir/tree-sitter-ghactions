@@ -1,11 +1,11 @@
 from unittest import TestCase
 
 from tree_sitter import Language, Parser
-import tree_sitter_actions
+import tree_sitter_ghactions
 
 
 def language():
-    return Language(tree_sitter_actions.language())
+    return Language(tree_sitter_ghactions.language())
 
 
 class TestLanguage(TestCase):

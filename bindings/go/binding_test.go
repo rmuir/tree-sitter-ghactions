@@ -1,14 +1,14 @@
-package tree_sitter_actions_test
+package tree_sitter_ghactions_test
 
 import (
 	"testing"
 
-	tree_sitter_actions "github.com/rmuir/tree-sitter-actions/bindings/go"
+	tree_sitter_ghactions "github.com/rmuir/tree-sitter-ghactions/bindings/go"
 	tree_sitter "github.com/tree-sitter/go-tree-sitter"
 )
 
 func TestCanLoadGrammar(t *testing.T) {
-	language := tree_sitter.NewLanguage(tree_sitter_actions.Language())
+	language := tree_sitter.NewLanguage(tree_sitter_ghactions.Language())
 	if language == nil {
 		t.Errorf("Error loading Github Actions grammar")
 	}

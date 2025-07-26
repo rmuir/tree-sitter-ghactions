@@ -1,4 +1,4 @@
-module github.com/rmuir/tree-sitter-actions
+module github.com/rmuir/tree-sitter-ghactions
 
 go 1.23
 
