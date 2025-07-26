@@ -1,0 +1,321 @@
+===
+remaining inputs
+===
+
+${{ 42 bar bar }}
+
+---
+
+(source
+  (ERROR
+    (number)
+    (identifier))
+  (identifier))
+
+===
+missing operand: || operator
+===
+
+${{ true || }}
+
+---
+
+(source
+  (binary_expression
+    (true)
+    (MISSING identifier)))
+
+===
+missing operand: && operator
+===
+
+${{ true && }}
+
+---
+
+(source
+  (binary_expression
+    (true)
+    (MISSING identifier)))
+
+===
+missing operand: < operator
+===
+
+${{ 0 < }}
+
+---
+
+(source
+  (binary_expression
+    (number)
+    (MISSING identifier)))
+
+===
+missing operand: <= operator
+===
+
+${{ 0 <= }}
+
+---
+
+(source
+  (binary_expression
+    (number)
+    (MISSING identifier)))
+
+===
+missing operand: > operator
+===
+
+${{ 0 > }}
+
+---
+
+(source
+  (binary_expression
+    (number)
+    (MISSING identifier)))
+
+===
+missing operand: >= operator
+===
+
+${{ 0 >= }}
+
+---
+
+(source
+  (binary_expression
+    (number)
+    (MISSING identifier)))
+
+===
+missing operand: == operator
+===
+
+${{ 0 == }}
+
+---
+
+(source
+  (binary_expression
+    (number)
+    (MISSING identifier)))
+
+===
+missing operand: != operator
+===
+
+${{ 0 != }}
+
+---
+
+(source
+  (binary_expression
+    (number)
+    (MISSING identifier)))
+
+===
+missing operand: ! operator
+===
+
+${{ ! }}
+
+---
+
+(source
+  (unary_expression
+    (MISSING identifier)))
+
+===
+missing operand: . operator
+===
+
+${{ foo. }}
+
+---
+
+(source
+  (dereference_expression
+    (identifier)
+    (MISSING "*")))
+
+===
+ident must come after .
+===
+
+${{ foo.42 }}
+
+---
+
+(source
+  (identifier)
+  (ERROR
+    (number)))
+
+===
+broken index access 1
+===
+
+${{ foo[0 }}
+
+---
+
+(source
+  (subscript_expression
+    (identifier)
+    (number)
+    (MISSING "]")))
+
+===
+broken index access 2
+===
+
+${{ foo[ }}
+
+---
+
+(source
+  (identifier)
+  (ERROR))
+
+===
+unexpected index access close
+===
+
+${{ foo[0) }}
+
+---
+
+(source
+  (identifier)
+  (ERROR
+    (number)))
+
+===
+start with invalid token
+===
+
+${{ [ }}
+
+---
+
+(source
+  (ERROR))
+
+===
+missing paren: expression
+===
+
+${{ (a }}
+
+---
+
+(source
+  (parenthesized_expression
+    (identifier)
+    (MISSING ")")))
+
+===
+invalid token at closing paren
+===
+
+${{ (a] }}
+
+---
+
+(source
+  (ERROR
+    (identifier)))
+
+===
+missing paren: call 1
+===
+
+${{ foo( }}
+
+---
+
+(source
+  (identifier)
+  (ERROR))
+
+===
+missing paren: call 2
+===
+
+${{ foo(0 }}
+
+---
+
+(source
+  (function_call
+    (identifier)
+    (argument_list
+      (number)
+      (MISSING ")"))))
+
+===
+missing paren: call 3
+===
+
+${{ foo(0, }}
+
+---
+
+(source
+  (identifier)
+  (ERROR
+    (number)))
+
+===
+missing paren: call 4
+===
+
+${{ foo(0, a }}
+
+---
+
+(source
+  (function_call
+    (identifier)
+    (argument_list
+      (number)
+      (identifier)
+      (MISSING ")"))))
+
+===
+unexpected closing at call
+===
+
+${{ foo(0] }}
+
+---
+
+(source
+  (identifier)
+  (ERROR
+    (number)))
+
+===
+error while parsing nested expression
+===
+
+${{ ([ }}
+
+---
+
+(source
+  (ERROR))
+
+===
+empty expression
+===
+
+${{ }}
+
+---
+
+(source
+  (MISSING identifier))

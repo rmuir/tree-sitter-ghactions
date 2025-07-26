@@ -1,0 +1,40 @@
+{
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
+  "grammars": [
+    {
+      "name": "actions",
+      "camelcase": "Actions",
+      "title": "Github Actions",
+      "scope": "source.actions",
+      "file-types": [
+        "actions"
+      ],
+      "injection-regex": "^actions$",
+      "class-name": "TreeSitterActions"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "Parser for Github Actions expressions",
+    "authors": [
+      {
+        "name": "Robert Muir",
+        "email": "rmuir@apache.org",
+        "url": "https://github.com/rmuir"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/rmuir/tree-sitter-actions"
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": true,
+    "node": true,
+    "python": true,
+    "rust": true,
+    "swift": true,
+    "zig": false
+  }
+}

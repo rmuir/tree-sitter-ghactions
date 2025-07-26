@@ -1,0 +1,302 @@
+===
+null
+===
+
+${{ null }}
+
+---
+
+(source
+  (null))
+
+===
+boolean: false
+===
+
+${{ false }}
+
+---
+
+(source
+  (false))
+
+===
+boolean: true
+===
+
+${{ true }}
+
+---
+
+(source
+  (true))
+
+===
+numeric: integer
+===
+
+${{ 711 }}
+
+---
+
+(source
+  (number))
+
+===
+numeric: negative
+===
+
+${{ -10 }}
+
+---
+
+(source
+  (unary_expression
+    (number)))
+
+===
+numeric: zero
+===
+
+${{ 0 }}
+
+---
+
+(source
+  (number))
+
+===
+numeric: negative zero
+===
+
+${{ -0 }}
+
+---
+
+(source
+  (unary_expression
+    (number)))
+
+===
+numeric: float
+===
+
+${{ -0.2 }}
+
+---
+
+(source
+  (unary_expression
+    (number)))
+
+===
+numeric: float small
+===
+
+${{ 0.567 }}
+
+---
+
+(source
+  (number))
+
+===
+numeric: float zero
+===
+
+${{ 0.0 }}
+
+---
+
+(source
+  (number))
+
+===
+numeric: hex
+===
+
+${{ 0xff }}
+
+---
+
+(source
+  (number))
+
+===
+numeric: hex uppercase
+===
+
+${{ 0xFF }}
+
+---
+
+(source
+  (number))
+
+===
+numeric: negative hex
+===
+
+${{ -0xff }}
+
+---
+
+(source
+  (unary_expression
+    (number)))
+
+===
+numeric: hex zero
+===
+
+${{ 0x0 }}
+
+---
+
+(source
+  (number))
+
+===
+numeric: exponential
+===
+
+${{ 12e3 }}
+
+---
+
+(source
+  (number))
+
+===
+numeric: exponential uppercase
+===
+
+${{ 12E3 }}
+
+---
+
+(source
+  (number))
+
+===
+numeric: exponential negative
+===
+
+${{ -99e-1 }}
+
+---
+
+(source
+  (unary_expression
+    (number)))
+
+===
+numeric: exponential with fraction
+===
+
+${{ 1.2e3 }}
+
+---
+
+(source
+  (number))
+
+===
+numeric: exponential with fraction and negative exponent
+===
+
+${{ -0.123e-12 }}
+
+---
+
+(source
+  (unary_expression
+    (number)))
+
+===
+text
+===
+
+Mona the Octocat
+
+---
+
+(source
+  (text))
+
+===
+string
+===
+
+${{ 'Its open source!' }}
+
+---
+
+(source
+  (string
+    (string_fragment)))
+
+===
+string: with escapes
+===
+
+${{ 'It''s open source!' }}
+
+---
+
+(source
+  (string
+    (string_fragment)
+    (escape)
+    (string_fragment)))
+
+===
+string: start/end escapes
+===
+
+${{ '''hellow''world''' }}
+
+---
+
+(source
+  (string
+    (escape)
+    (string_fragment)
+    (escape)
+    (string_fragment)
+    (escape)))
+
+===
+string: braces
+===
+
+${{ 'braces {in} string {{is}} ok!' }}
+
+---
+
+(source
+  (string
+    (string_fragment)))
+
+===
+string: empty
+===
+
+${{ '' }}
+
+---
+
+(source
+  (string))
+
+===
+string: escape
+===
+
+${{ '''' }}
+
+---
+
+(source
+  (string
+    (escape)))

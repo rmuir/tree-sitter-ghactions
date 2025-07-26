@@ -1,0 +1,43 @@
+===
+call
+===
+
+${{ success() }}
+
+---
+
+(source
+  (function_call
+    (identifier)
+    (argument_list)))
+
+===
+call: one argument
+===
+
+${{ fromJSON(object) }}
+
+---
+
+(source
+  (function_call
+    (identifier)
+    (argument_list
+      (identifier))))
+
+===
+call: multiple arguments
+===
+
+${{ contains('hello, world', 'o, w') }}
+
+---
+
+(source
+  (function_call
+    (identifier)
+    (argument_list
+      (string
+        (string_fragment))
+      (string
+        (string_fragment)))))

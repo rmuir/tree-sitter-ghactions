@@ -1,0 +1,354 @@
+===
+parens
+===
+
+${{ (42) }}
+
+---
+
+(source
+  (parenthesized_expression
+    (number)))
+
+===
+parens: many
+===
+
+${{ (((((((((42))))))))) }}
+
+---
+
+(source
+  (parenthesized_expression
+    (parenthesized_expression
+      (parenthesized_expression
+        (parenthesized_expression
+          (parenthesized_expression
+            (parenthesized_expression
+              (parenthesized_expression
+                (parenthesized_expression
+                  (parenthesized_expression
+                    (number)))))))))))
+
+===
+subscript
+===
+
+${{ obj['key'] }}
+
+---
+
+(source
+  (subscript_expression
+    (identifier)
+    (string
+      (string_fragment))))
+
+===
+compound
+===
+
+${{ 0 == 0.1 && a < b || x >= !y && true != false }}
+
+---
+
+(source
+  (binary_expression
+    (binary_expression
+      (binary_expression
+        (number)
+        (number))
+      (binary_expression
+        (identifier)
+        (identifier)))
+    (binary_expression
+      (binary_expression
+        (identifier)
+        (unary_expression
+          (identifier)))
+      (binary_expression
+        (true)
+        (false)))))
+
+===
+compound: parens
+===
+
+${{ (0 == 0.1) && (a < b || x >= !y) && (true != false) }}
+
+---
+
+(source
+  (binary_expression
+    (binary_expression
+      (parenthesized_expression
+        (binary_expression
+          (number)
+          (number)))
+      (parenthesized_expression
+        (binary_expression
+          (binary_expression
+            (identifier)
+            (identifier))
+          (binary_expression
+            (identifier)
+            (unary_expression
+              (identifier))))))
+    (parenthesized_expression
+      (binary_expression
+        (true)
+        (false)))))
+
+===
+compound: many parens
+===
+
+${{ ((0 == 0.1) && (a < b || x >= !y)) && (true != false) }}
+
+---
+
+(source
+  (binary_expression
+    (parenthesized_expression
+      (binary_expression
+        (parenthesized_expression
+          (binary_expression
+            (number)
+            (number)))
+        (parenthesized_expression
+          (binary_expression
+            (binary_expression
+              (identifier)
+              (identifier))
+            (binary_expression
+              (identifier)
+              (unary_expression
+                (identifier)))))))
+    (parenthesized_expression
+      (binary_expression
+        (true)
+        (false)))))
+
+===
+property dereference
+===
+
+${{ a.b }}
+
+---
+
+(source
+  (dereference_expression
+    (identifier)
+    (identifier)))
+
+===
+property dereference: uppercase name
+===
+
+${{ github.EVENT }}
+
+---
+
+(source
+  (dereference_expression
+    (identifier)
+    (identifier)))
+
+===
+property dereference: nested
+===
+
+${{ a.b.c.d }}
+
+---
+
+(source
+  (dereference_expression
+    (dereference_expression
+      (dereference_expression
+        (identifier)
+        (identifier))
+      (identifier))
+    (identifier)))
+
+===
+property dereference: includes uppercase
+===
+
+${{ a.doSomething }}
+
+---
+
+(source
+  (dereference_expression
+    (identifier)
+    (identifier)))
+
+===
+property dereference: includes -
+===
+
+${{ a.foo-bar }}
+
+---
+
+(source
+  (dereference_expression
+    (identifier)
+    (identifier)))
+
+===
+array element dereference
+===
+
+${{ a.* }}
+
+---
+
+(source
+  (dereference_expression
+    (identifier)))
+
+===
+nested array element dereference
+===
+
+${{ a.*.*.* }}
+
+---
+
+(source
+  (dereference_expression
+    (dereference_expression
+      (dereference_expression
+        (identifier)))))
+
+===
+nested function calls
+===
+
+${{ !contains(some.value, 'foo') && endsWith(join(x.*.y, ', '), 'bar') }}
+
+---
+
+(source
+  (binary_expression
+    (unary_expression
+      (function_call
+        (identifier)
+        (argument_list
+          (dereference_expression
+            (identifier)
+            (identifier))
+          (string
+            (string_fragment)))))
+    (function_call
+      (identifier)
+      (argument_list
+        (function_call
+          (identifier)
+          (argument_list
+            (dereference_expression
+              (dereference_expression
+                (identifier))
+              (identifier))
+            (string
+              (string_fragment))))
+        (string
+          (string_fragment))))))
+
+===
+nested function calls with nested expressions
+===
+
+${{ !((contains((some.value), ('foo'))) && (endsWith((join((x.*.y), (', '))), ('bar')))) }}
+
+---
+
+(source
+  (unary_expression
+    (parenthesized_expression
+      (binary_expression
+        (parenthesized_expression
+          (function_call
+            (identifier)
+            (argument_list
+              (parenthesized_expression
+                (dereference_expression
+                  (identifier)
+                  (identifier)))
+              (parenthesized_expression
+                (string
+                  (string_fragment))))))
+        (parenthesized_expression
+          (function_call
+            (identifier)
+            (argument_list
+              (parenthesized_expression
+                (function_call
+                  (identifier)
+                  (argument_list
+                    (parenthesized_expression
+                      (dereference_expression
+                        (dereference_expression
+                          (identifier))
+                        (identifier)))
+                    (parenthesized_expression
+                      (string
+                        (string_fragment))))))
+              (parenthesized_expression
+                (string
+                  (string_fragment))))))))))
+
+===
+nested dereferences
+===
+
+${{ contains(github.event['issue'].labels.*.name, 'bug') }}
+
+---
+
+(source
+  (function_call
+    (identifier)
+    (argument_list
+      (dereference_expression
+        (dereference_expression
+          (dereference_expression
+            (subscript_expression
+              (dereference_expression
+                (identifier)
+                (identifier))
+              (string
+                (string_fragment)))
+            (identifier)))
+        (identifier))
+      (string
+        (string_fragment)))))
+
+===
+nested dereferences with nested expressions
+===
+
+${{ (((((github.event)['issue']).labels).*).name) }}
+
+---
+
+(source
+  (parenthesized_expression
+    (dereference_expression
+      (parenthesized_expression
+        (dereference_expression
+          (parenthesized_expression
+            (dereference_expression
+              (parenthesized_expression
+                (subscript_expression
+                  (parenthesized_expression
+                    (dereference_expression
+                      (identifier)
+                      (identifier)))
+                  (string
+                    (string_fragment))))
+              (identifier)))))
+      (identifier))))

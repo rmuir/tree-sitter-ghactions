@@ -1,0 +1,129 @@
+===
+comparison: <
+===
+
+${{ 0 < 1 }}
+
+---
+
+(source
+  (binary_expression
+    (number)
+    (number)))
+
+===
+comparison: <=
+===
+
+${{ 0 <= 1 }}
+
+---
+
+(source
+  (binary_expression
+    (number)
+    (number)))
+
+===
+comparison: >
+===
+
+${{ 1 > 0 }}
+
+---
+
+(source
+  (binary_expression
+    (number)
+    (number)))
+
+===
+comparison: >=
+===
+
+${{ 1 >= 0 }}
+
+---
+
+(source
+  (binary_expression
+    (number)
+    (number)))
+
+
+===
+comparison: ==
+===
+
+${{ 1 == 0 }}
+
+---
+
+(source
+  (binary_expression
+    (number)
+    (number)))
+
+===
+comparison: !=
+===
+
+${{ 1 != 0 }}
+
+---
+
+(source
+  (binary_expression
+    (number)
+    (number)))
+
+===
+logical: &&
+===
+
+${{ true && false }}
+
+---
+
+(source
+  (binary_expression
+    (true)
+    (false)))
+
+===
+logical: ||
+===
+
+${{ true || false }}
+
+---
+
+(source
+  (binary_expression
+    (true)
+    (false)))
+
+===
+unary: !
+===
+
+${{ !true }}
+
+---
+
+(source
+  (unary_expression
+    (true)))
+
+===
+unary: ! twice
+===
+
+${{ !!true }}
+
+---
+
+(source
+  (unary_expression
+    (unary_expression
+      (true))))

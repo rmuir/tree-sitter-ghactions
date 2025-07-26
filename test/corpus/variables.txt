@@ -1,0 +1,76 @@
+===
+identifier
+===
+
+${{ foo }}
+
+---
+
+(source
+  (identifier))
+
+===
+identifier: with _
+===
+
+${{ foo_bar }}
+
+---
+
+(source
+  (identifier))
+
+===
+identifier: with -
+===
+
+${{ foo-bar }}
+
+---
+
+(source
+  (identifier))
+
+===
+identifier: with _ and -
+===
+
+${{ foo_bar-piyo }}
+
+---
+
+(source
+  (identifier))
+
+===
+identifier: _
+===
+
+${{ _ }}
+
+---
+
+(source
+  (identifier))
+
+===
+identifier: _-
+===
+
+${{ _- }}
+
+---
+
+(source
+  (identifier))
+
+===
+identifier: uppercase
+===
+
+${{ GITHUB }}
+
+---
+
+(source
+  (identifier))
