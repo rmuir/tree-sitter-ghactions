@@ -50,7 +50,7 @@ NOTE: these instructions are based upon the `main` branch of `nvim-treesitter`.
 
 ## Bindings Installation (for development)
 
-Bindings are published to `pypi`, `npm`, and `crates.io` as `tree-sitter-actions`.
+Bindings are published to `pypi`, `npm`, and `crates.io` as `tree-sitter-ghactions`.
 Wasm and source code artifacts are published to [GitHub releases](https://github.com/rmuir/tree-sitter-ghactions/releases)
 
 ## Screenshot of highlights

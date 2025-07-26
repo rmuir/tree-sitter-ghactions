@@ -1,11 +1,11 @@
 [package]
 name = "tree-sitter-ghactions"
 description = "Parser for Github Actions expressions"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["Robert Muir <rmuir@apache.org>"]
 license = "MIT"
 readme = "README.md"
-keywords = ["incremental", "parsing", "tree-sitter", "actions"]
+keywords = ["incremental", "parsing", "tree-sitter", "github", "actions"]
 categories = ["parser-implementations", "parsing", "text-editors"]
 repository = "https://github.com/rmuir/tree-sitter-ghactions"
 edition = "2021"
