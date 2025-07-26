@@ -6,11 +6,9 @@ Cargo.lock
 build/
 prebuilds/
 node_modules/
-package-lock.json
 
 # Swift artifacts
 .build/
-Package.resolved
 
 # Go artifacts
 _obj/
@@ -20,6 +18,8 @@ _obj/
 dist/
 *.egg-info
 *.whl
+__pycache__
+.ruff_cache
 
 # C artifacts
 *.a
