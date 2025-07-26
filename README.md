@@ -2,6 +2,12 @@
 
 Github Actions expressions grammar for [tree-sitter](https://github.com/tree-sitter/tree-sitter)
 
+## Features
+
+* Parses Github Action's expressions: `${{ ... }}`
+* Plays well with `bash` injections in YAML documents
+* Passes parsing tests from [actionlint](https://github.com/rhysd/actionlint)
+
 ## Neovim Installation (for use in your editor)
 
 1. Install [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter/tree/main)
@@ -49,4 +55,4 @@ Wasm and source code artifacts are published to [GitHub releases](https://github
 
 ## Screenshot of highlights
 
-![Syntax highlighting screenshot](https://github.com/user-attachments/assets/8c04aa7b-b6df-497e-963d-58fe5e50d780)
+![Syntax highlighting screenshot](https://github.com/user-attachments/assets/0c1f34bb-6f02-4175-9495-97e6fa51334a)
