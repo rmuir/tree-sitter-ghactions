@@ -1,0 +1,75 @@
+name: CI
+
+permissions:
+  contents: read
+
+env:
+  TREE_SITTER_VERSION: "v0.25.8"
+  TREE_SITTER_ABI_VERSION: "15"
+  # arbitrary, for linting only
+  NODE_VERSION: "22.16.0"
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - '*'
+
+concurrency:
+  group: ${{github.workflow}}-${{github.ref}}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    name: Lint grammar
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - name: Set up Node.js
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          cache: npm
+          node-version: ${{env.NODE_VERSION}}
+      - name: Install modules
+        run: npm ci --legacy-peer-deps
+      - name: Run tsc
+        run: npm run typecheck
+      - name: Run ESLint
+        run: npm run lint
+  test:
+    name: Test parser
+    runs-on: ${{matrix.os}}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-15]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - name: Set up tree-sitter
+        uses: tree-sitter/setup-action/cli@cd96f2c296346c12cf539df3e5cd00102a1f2340 # v2
+        with:
+          tree-sitter-ref: ${{env.TREE_SITTER_VERSION}}
+      - name: Run parser and binding tests
+        uses: tree-sitter/parser-test-action@1f7ad83f2358970a13cd62ca1859eafc3326d669 # v2
+        with:
+          test-go: true
+          test-python: true
+          test-node: true
+          test-rust: true
+          # setup-swift fails GPG validation on linux
+          test-swift: ${{runner.os == 'macOS'}}
+          abi-version: ${{env.TREE_SITTER_ABI_VERSION}}
+
+  fuzz:
+    name: Fuzz scanner
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - name: Run the fuzzer
+        uses: tree-sitter/fuzz-action@6a1dcff00aefd038ba418bd63732a9add4901266 # v4
