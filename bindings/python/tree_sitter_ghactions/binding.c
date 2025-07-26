@@ -2,24 +2,23 @@
 
 typedef struct TSLanguage TSLanguage;
 
-TSLanguage *tree_sitter_actions(void);
+TSLanguage *tree_sitter_ghactions(void);
 
-static PyObject* _binding_language(PyObject *Py_UNUSED(self), PyObject *Py_UNUSED(args)) {
-    return PyCapsule_New(tree_sitter_actions(), "tree_sitter.Language", NULL);
+static PyObject *_binding_language(PyObject *Py_UNUSED(self),
+                                   PyObject *Py_UNUSED(args)) {
+  return PyCapsule_New(tree_sitter_ghactions(), "tree_sitter.Language", NULL);
 }
 
 static struct PyModuleDef_Slot slots[] = {
 #ifdef Py_GIL_DISABLED
     {Py_mod_gil, Py_MOD_GIL_NOT_USED},
 #endif
-    {0, NULL}
-};
+    {0, NULL}};
 
 static PyMethodDef methods[] = {
     {"language", _binding_language, METH_NOARGS,
      "Get the tree-sitter language for this grammar."},
-    {NULL, NULL, 0, NULL}
-};
+    {NULL, NULL, 0, NULL}};
 
 static struct PyModuleDef module = {
     .m_base = PyModuleDef_HEAD_INIT,
@@ -30,6 +29,4 @@ static struct PyModuleDef module = {
     .m_slots = slots,
 };
 
-PyMODINIT_FUNC PyInit__binding(void) {
-    return PyModuleDef_Init(&module);
-}
+PyMODINIT_FUNC PyInit__binding(void) { return PyModuleDef_Init(&module); }

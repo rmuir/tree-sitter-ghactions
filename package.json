@@ -1,8 +1,8 @@
 {
-  "name": "tree-sitter-actions",
+  "name": "tree-sitter-ghactions",
   "version": "0.1.1",
   "description": "Parser for Github Actions expressions",
-  "repository": "https://github.com/rmuir/tree-sitter-actions",
+  "repository": "https://github.com/rmuir/tree-sitter-ghactions",
   "license": "MIT",
   "author": {
     "name": "Robert Muir",
@@ -15,6 +15,7 @@
     "incremental",
     "parsing",
     "tree-sitter",
+    "github",
     "actions"
   ],
   "files": [

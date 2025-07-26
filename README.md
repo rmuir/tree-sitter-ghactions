@@ -1,4 +1,4 @@
-# tree-sitter-actions
+# tree-sitter-ghactions
 
 Github Actions expressions grammar for [tree-sitter](https://github.com/tree-sitter/tree-sitter)
 
@@ -19,9 +19,9 @@ Github Actions expressions grammar for [tree-sitter](https://github.com/tree-sit
 vim.api.nvim_create_autocmd('User', {
   pattern = 'TSUpdate',
   callback = function()
-    require('nvim-treesitter.parsers').actions = {
+    require('nvim-treesitter.parsers').ghactions = {
       install_info = {
-        url = 'https://github.com/rmuir/tree-sitter-actions',
+        url = 'https://github.com/rmuir/tree-sitter-ghactions',
         queries = 'queries',
       },
     }
@@ -41,7 +41,7 @@ vim.api.nvim_create_autocmd('User', {
   (single_quote_scalar)
 ] @injection.content
   (#lua-match? @injection.content "[$]{{.*}}")
-  (#set! injection.language "actions"))
+  (#set! injection.language "ghactions"))
 ```
 
 4. Run `:TSUpdate` from neovim.
@@ -51,7 +51,7 @@ NOTE: these instructions are based upon the `main` branch of `nvim-treesitter`.
 ## Bindings Installation (for development)
 
 Bindings are published to `pypi`, `npm`, and `crates.io` as `tree-sitter-actions`.
-Wasm and source code artifacts are published to [GitHub releases](https://github.com/rmuir/tree-sitter-actions/releases)
+Wasm and source code artifacts are published to [GitHub releases](https://github.com/rmuir/tree-sitter-ghactions/releases)
 
 ## Screenshot of highlights
 

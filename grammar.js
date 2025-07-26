@@ -22,7 +22,7 @@ const PREC = {
 /* eslint-enable no-multi-spaces */
 
 module.exports = grammar({
-  name: 'actions',
+  name: 'ghactions',
 
   supertypes: $ => [
     $._expression,
