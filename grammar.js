@@ -14,7 +14,7 @@ const PREC = {
   AND: 2,            // &&
   EQUALITY: 3,       // == !=
   REL: 4,            // < <= > >=
-  UNARY: 5,          // ! + -
+  UNARY: 5,          // !
   SUBSCRIPT: 6,      // []
   OBJ_ACCESS: 6,     // .
   PARENS: 6,         // ()
@@ -81,8 +81,6 @@ module.exports = grammar({
     unary_expression: $ => choice(
       ...[
         ['!', PREC.UNARY],
-        ['-', PREC.UNARY],
-        ['+', PREC.UNARY],
       ].map(([operator, precedence]) =>
         prec.left(precedence, seq(
           // @ts-ignore
@@ -153,13 +151,17 @@ module.exports = grammar({
         decimalDigits,
       );
 
-      return token(choice(
-        hexLiteral,
-        decimalLiteral,
-        binaryLiteral,
-        octalLiteral,
-        bigintLiteral,
-      ));
+      return token(seq(
+        optional(choice(
+          '-',
+          '+')),
+        choice(
+          hexLiteral,
+          decimalLiteral,
+          binaryLiteral,
+          octalLiteral,
+          bigintLiteral,
+        )));
     },
 
     string: $ => seq(
