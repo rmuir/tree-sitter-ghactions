@@ -51,8 +51,7 @@ ${{ -10 }}
 ---
 
 (source
-  (unary_expression
-    (number)))
+  (number))
 
 ===
 numeric: zero
@@ -74,8 +73,7 @@ ${{ -0 }}
 ---
 
 (source
-  (unary_expression
-    (number)))
+  (number))
 
 ===
 numeric: float
@@ -86,8 +84,7 @@ ${{ -0.2 }}
 ---
 
 (source
-  (unary_expression
-    (number)))
+  (number))
 
 ===
 numeric: float small
@@ -142,8 +139,7 @@ ${{ -0xff }}
 ---
 
 (source
-  (unary_expression
-    (number)))
+  (number))
 
 ===
 numeric: hex zero
@@ -187,8 +183,7 @@ ${{ -99e-1 }}
 ---
 
 (source
-  (unary_expression
-    (number)))
+  (number))
 
 ===
 numeric: exponential with fraction
@@ -210,8 +205,7 @@ ${{ -0.123e-12 }}
 ---
 
 (source
-  (unary_expression
-    (number)))
+  (number))
 
 ===
 text

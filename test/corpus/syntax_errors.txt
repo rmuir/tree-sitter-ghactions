@@ -129,6 +129,33 @@ ${{ ! }}
     (MISSING identifier)))
 
 ===
+not a unary operator: -
+===
+
+${{ -(42) }}
+
+---
+
+(source
+  (ERROR
+    (UNEXPECTED '('))
+  (parenthesized_expression
+    (number)))
+
+===
+not a unary operator: +
+===
+
+${{ +bogus }}
+
+---
+
+(source
+  (ERROR
+    (UNEXPECTED 'b'))
+  (identifier))
+
+===
 missing operand: . operator
 ===
 
