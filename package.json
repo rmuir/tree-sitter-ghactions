@@ -1,6 +1,6 @@
 {
   "name": "tree-sitter-ghactions",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Parser for Github Actions expressions",
   "repository": "https://github.com/rmuir/tree-sitter-ghactions",
   "license": "MIT",
