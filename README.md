@@ -46,7 +46,7 @@ vim.api.nvim_create_autocmd('User', {
   (#set! injection.language "ghactions"))
 ```
 
-4. Run `:TSUpdate` from neovim.
+4. Run `:TSUpdate` and `:TSInstall ghactions` from neovim.
 
 NOTE: these instructions are based upon the `main` branch of `nvim-treesitter`.
 
