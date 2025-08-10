@@ -36,7 +36,7 @@
     "prebuildify": "^6.0.1",
     "tree-sitter-cli": "^0.25.8",
     "tree-sitter": "^0.25.0",
-    "eslint": "^9.31.0",
+    "eslint": "^9.33.0",
     "eslint-config-treesitter": "^1.0.2",
     "typescript": "^5.9.2"
   },
