@@ -51,7 +51,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
       - name: Set up tree-sitter
-        uses: tree-sitter/setup-action/cli@cd96f2c296346c12cf539df3e5cd00102a1f2340 # v2
+        uses: tree-sitter/setup-action/cli@c4c258862a6a7e43a7aef152256bbf659972c408 # v2
         with:
           tree-sitter-ref: ${{env.TREE_SITTER_VERSION}}
       - name: Run parser and binding tests
