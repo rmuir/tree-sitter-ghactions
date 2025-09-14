@@ -58,6 +58,7 @@ jobs:
         uses: tree-sitter/parser-test-action@682af8106ccdcc9e083f05d38ab88fcd76a00b74 # v2
         with:
           test-go: true
+          go-version: 1.23
           test-python: true
           test-node: true
           test-rust: true
