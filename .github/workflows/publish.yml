@@ -1,39 +1,48 @@
+---
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
 name: Publish packages
 
 on:
   push:
     tags: ["*"]
 
-permissions:
-  contents: write
-  id-token: write
-  attestations: write
+permissions: {}
 
 jobs:
   github:
     uses: tree-sitter/workflows/.github/workflows/release.yml@14265627712d996af2c85773c9eab5bfecd3660f
+    permissions:
+      contents: write # create github release
+      id-token: write # deploy
+      attestations: write # create attestations
     with:
       abi-version: "15"
       generate: false
       attestations: true
   crates:
     uses: tree-sitter/workflows/.github/workflows/package-crates.yml@14265627712d996af2c85773c9eab5bfecd3660f
+    permissions:
+      id-token: write # deploy
     secrets:
-      CARGO_REGISTRY_TOKEN: ${{secrets.CARGO_REGISTRY_TOKEN}}
+      CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
     with:
       abi-version: "15"
       generate: false
   pypi:
     uses: tree-sitter/workflows/.github/workflows/package-pypi.yml@14265627712d996af2c85773c9eab5bfecd3660f
+    permissions:
+      id-token: write # deploy
     secrets:
-      PYPI_API_TOKEN: ${{secrets.PYPI_API_TOKEN}}
+      PYPI_API_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
     with:
       abi-version: "15"
       generate: false
   npm:
     uses: tree-sitter/workflows/.github/workflows/package-npm.yml@14265627712d996af2c85773c9eab5bfecd3660f
+    permissions:
+      id-token: write # deploy
     secrets:
-      NODE_AUTH_TOKEN: ${{secrets.NODE_AUTH_TOKEN}}
+      NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
     with:
       abi-version: "15"
       generate: false
