@@ -1,7 +1,8 @@
+---
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
 name: CI
 
-permissions:
-  contents: read
+permissions: {}
 
 env:
   TREE_SITTER_VERSION: "v0.25.9"
@@ -19,7 +20,7 @@ on:
       - '*'
 
 concurrency:
-  group: ${{github.workflow}}-${{github.ref}}
+  group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -29,11 +30,13 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        with:
+          persist-credentials: false
       - name: Set up Node.js
         uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
         with:
           cache: npm
-          node-version: ${{env.NODE_VERSION}}
+          node-version: ${{ env.NODE_VERSION }}
       - name: Install modules
         run: npm ci --legacy-peer-deps
       - name: Run tsc
@@ -42,7 +45,7 @@ jobs:
         run: npm run lint
   test:
     name: Test parser
-    runs-on: ${{matrix.os}}
+    runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
@@ -50,10 +53,12 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        with:
+          persist-credentials: false
       - name: Set up tree-sitter
         uses: tree-sitter/setup-action/cli@c4c258862a6a7e43a7aef152256bbf659972c408 # v2
         with:
-          tree-sitter-ref: ${{env.TREE_SITTER_VERSION}}
+          tree-sitter-ref: ${{ env.TREE_SITTER_VERSION }}
       - name: Run parser and binding tests
         uses: tree-sitter/parser-test-action@05f6ce7c7e54603c45cd87ed926725dc870bcc63 # v2
         with:
@@ -63,8 +68,8 @@ jobs:
           test-node: true
           test-rust: true
           # setup-swift fails GPG validation on linux
-          test-swift: ${{runner.os == 'macOS'}}
-          abi-version: ${{env.TREE_SITTER_ABI_VERSION}}
+          test-swift: ${{ runner.os == 'macOS' }}
+          abi-version: ${{ env.TREE_SITTER_ABI_VERSION }}
 
   fuzz:
     name: Fuzz scanner
@@ -72,5 +77,7 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        with:
+          persist-credentials: false
       - name: Run the fuzzer
         uses: tree-sitter/fuzz-action@6a1dcff00aefd038ba418bd63732a9add4901266 # v4
