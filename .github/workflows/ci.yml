@@ -5,7 +5,7 @@ name: CI
 permissions: {}
 
 env:
-  TREE_SITTER_VERSION: "v0.25.9"
+  TREE_SITTER_VERSION: "v0.25.10"
   TREE_SITTER_ABI_VERSION: "15"
   # arbitrary, for linting only
   NODE_VERSION: "22.16.0"
