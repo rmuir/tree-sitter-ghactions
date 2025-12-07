@@ -15,7 +15,7 @@ Github Actions expressions grammar for [tree-sitter](https://github.com/tree-sit
 It is recommended to install at least `yaml`, `bash`, and `comment` parsers to support github actions files.
 
 2. Configure autocmd for a custom parser:
-   
+
 ```lua
 -- custom parsers
 vim.api.nvim_create_autocmd('User', {
@@ -32,6 +32,7 @@ vim.api.nvim_create_autocmd('User', {
 ```
 
 3. Configure yaml injection in `~/.config/nvim/queries/yaml/injections.scm`:
+
 ```tsq
 ; extends
 
