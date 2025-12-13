@@ -44,7 +44,7 @@ vim.api.nvim_create_autocmd('User', {
   (single_quote_scalar)
   (ERROR)
 ] @injection.content
-  (#lua-match? @injection.content "[$]{{.*")
+  (#lua-match? @injection.content "[$]{{")
   (#set! injection.language "ghactions"))
 ```
 
