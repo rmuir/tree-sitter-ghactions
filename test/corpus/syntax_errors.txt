@@ -346,3 +346,17 @@ ${{ }}
 
 (source
   (MISSING identifier))
+
+===
+incomplete expression
+===
+
+${{ github.whatever
+
+---
+
+(source
+  (dereference_expression
+    (identifier)
+    (identifier))
+  (MISSING "}}"))
