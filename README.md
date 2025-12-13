@@ -12,7 +12,7 @@ Github Actions expressions grammar for [tree-sitter](https://github.com/tree-sit
 
 1. Install [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter/tree/main)
 
-It is recommended to install at least `yaml`, `bash`, and `comment` parsers to support github actions files.
+It is recommended to install at least `yaml`, `bash`, `json`, and `comment` parsers to support github actions files.
 
 2. Configure autocmd for a custom parser:
 
