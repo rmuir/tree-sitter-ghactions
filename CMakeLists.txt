@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.13)
 
 project(tree-sitter-ghactions
-        VERSION "0.2.2"
+        VERSION "0.2.3"
         DESCRIPTION "Parser for Github Actions expressions"
         HOMEPAGE_URL "https://github.com/rmuir/tree-sitter-ghactions"
         LANGUAGES C)
