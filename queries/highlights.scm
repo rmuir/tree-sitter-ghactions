@@ -1,4 +1,4 @@
-; note: all highlights are set to priority 101, for compatibility with bash injections in yaml
+; note: all highlights (except @string) are set to priority 101, for compatibility with bash injections in yaml
 ([
   "${{"
   "}}"
@@ -76,8 +76,7 @@
 ((null) @constant.builtin
   (#set! priority 101))
 
-((string) @string
-  (#set! priority 101))
+(string) @string
 
 ((escape) @string.escape
   (#set! priority 101))
