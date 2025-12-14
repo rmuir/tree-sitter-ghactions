@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "tree-sitter-ghactions"
 description = "Parser for Github Actions expressions"
-version = "0.2.3"
+version = "0.2.4"
 keywords = ["incremental", "parsing", "tree-sitter", "github", "actions"]
 classifiers = [
   "Intended Audience :: Developers",
