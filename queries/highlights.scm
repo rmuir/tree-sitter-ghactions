@@ -44,6 +44,7 @@
 ; https://docs.github.com/en/actions/reference/workflows-and-actions/contexts
 (dereference_expression
   object: (identifier) @module.builtin
+  ; TODO: technically case-insensitive
   (#any-of? @module.builtin
     "github" "env" "vars" "job" "jobs" "steps" "runner" "secrets" "strategy" "matrix" "needs"
     "inputs")
@@ -60,9 +61,10 @@
 ; https://docs.github.com/en/actions/reference/workflows-and-actions/expressions#functions
 ((function_call
   name: (identifier) @function.builtin
+  ; TODO: technically case-insensitive
   (#any-of? @function.builtin
-    "contains" "startsWith" "endsWith" "format" "join" "toJSON" "fromJSON" "hashFiles" "success"
-    "always" "cancelled" "failure"))
+    "contains" "startsWith" "endsWith" "format" "join" "toJSON" "toJson" "fromJSON" "fromJson"
+    "hashFiles" "success" "always" "cancelled" "failure"))
   (#set! priority 101))
 
 ([
