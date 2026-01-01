@@ -42,7 +42,7 @@ jobs:
       abi-version: "15"
       generate: false
   npm:
-    uses: tree-sitter/workflows/.github/workflows/package-npm.yml@67eb38f65e3a08dc2851fa8575ced44ff2857705
+    uses: tree-sitter/workflows/.github/workflows/package-npm.yml@9a10bab3d9bb66d2cc9283b65fad01ddca3ef62c
     permissions:
       id-token: write # deploy
     secrets:
