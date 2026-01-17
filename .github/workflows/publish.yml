@@ -22,7 +22,6 @@ jobs:
     with:
       abi-version: "15"
       generate: false
-      attestations: true
   crates:
     uses: tree-sitter/workflows/.github/workflows/package-crates.yml@67eb38f65e3a08dc2851fa8575ced44ff2857705
     permissions:
