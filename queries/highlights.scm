@@ -64,7 +64,7 @@
   ; TODO: technically case-insensitive
   (#any-of? @function.builtin
     "contains" "startsWith" "endsWith" "format" "join" "toJSON" "toJson" "fromJSON" "fromJson"
-    "hashFiles" "success" "always" "cancelled" "failure"))
+    "hashFiles" "success" "always" "cancelled" "failure" "case"))
   (#set! priority 101))
 
 ([
