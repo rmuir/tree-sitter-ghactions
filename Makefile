@@ -4,7 +4,7 @@ endif
 
 LANGUAGE_NAME := tree-sitter-ghactions
 HOMEPAGE_URL := https://github.com/rmuir/tree-sitter-ghactions
-VERSION := 0.2.4
+VERSION := 0.2.5
 
 # repository
 SRC_DIR := src
