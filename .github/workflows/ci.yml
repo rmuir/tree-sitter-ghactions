@@ -9,6 +9,8 @@ env:
   TREE_SITTER_ABI_VERSION: "15"
   # arbitrary, for linting only
   NODE_VERSION: "22.16.0"
+  # currently not bumped by dependabot
+  TS_QUERY_LS_VERSION: "v3.15.1"
 
 on:
   workflow_dispatch:
@@ -98,3 +100,34 @@ jobs:
           persist-credentials: false
       - name: Run the fuzzer
         uses: tree-sitter/fuzz-action@6a1dcff00aefd038ba418bd63732a9add4901266 # v4
+
+  query:
+    name: Lint Queries
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+        with:
+          persist-credentials: false
+      - name: Set up tree-sitter
+        uses: tree-sitter/setup-action/cli@eeb902ac2f1be576edc296309872cf476a209b7f # master
+        with:
+          tree-sitter-ref: ${{ env.TREE_SITTER_VERSION }}
+      - name: Build parser
+        run: tree-sitter build
+      - name: Cache ts_query_ls binary
+        id: cache-ts-query-ls
+        uses: actions/cache@9255dc7a253b0ccc959486e2bca901246202afeb # v5.0.1
+        with:
+          path: ~/.local/bin/ts_query_ls
+          key: ts_query_ls-${{ env.TS_QUERY_LS_VERSION }}-${{ runner.os }}-${{ runner.arch }}
+      - name: Setup ts_query_ls
+        if: ${{ steps.cache-ts-query-ls.outputs.cache-hit != 'true' }}
+        run: |
+          mkdir -p ~/.local/bin
+          curl --fail --location "${TS_QUERY_LS_DIST}" | tar -zxC ~/.local/bin ts_query_ls
+        env:
+          TS_QUERY_LS_DIST: "https://github.com/ribru17/ts_query_ls/releases/download/${{ env.TS_QUERY_LS_VERSION }}/ts_query_ls-x86_64-unknown-linux-gnu.tar.gz"
+      - name: Check queries
+        run: ~/.local/bin/ts_query_ls check -f queries/
