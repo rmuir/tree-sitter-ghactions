@@ -53,7 +53,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ZIZMOR_OFFLINE: ${{ github.event_name == 'pull_request' || github.event_name == 'push' }}
       - name: Upload SARIF file
-        uses: github/codeql-action/upload-sarif@3599b3baa15b485a2e49ef411a7a4bb2452e7f93 # v3.30.5
+        uses: github/codeql-action/upload-sarif@89a39a4e59826350b863aa6b6252a07ad50cf83e # v4.32.4
         with:
           sarif_file: results.sarif
           category: zizmor
