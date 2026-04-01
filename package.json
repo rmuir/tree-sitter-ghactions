@@ -40,7 +40,7 @@
     "@eslint/js": "^10.0.1",
     "eslint-config-treesitter": "^1.0.2",
     "globals": "^17.4.0",
-    "typescript": "^5.9.3"
+    "typescript": "^6.0.2"
   },
   "peerDependencies": {
     "tree-sitter": "^0.22.4"
