@@ -32,7 +32,7 @@ jobs:
       abi-version: 15
       generate: false
   pypi:
-    uses: tree-sitter/workflows/.github/workflows/package-pypi.yml@9a10bab3d9bb66d2cc9283b65fad01ddca3ef62c
+    uses: tree-sitter/workflows/.github/workflows/package-pypi.yml@216133f5cb4469b112c5e83415869e58b25c353a
     permissions:
       id-token: write # deploy
     secrets:
