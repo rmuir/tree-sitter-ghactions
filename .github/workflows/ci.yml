@@ -87,7 +87,7 @@ jobs:
           persist-credentials: false
 
       - name: Run rumdl
-        uses: rvben/rumdl@8074f0494bd6ff03f7d5590a9beaeb124da702a1 # v0.0.190
+        uses: rvben/rumdl@097fbad168c977130c573a03797c0d407cb4ad21 # v0.1.81
 
   fuzz:
     name: Fuzz scanner
