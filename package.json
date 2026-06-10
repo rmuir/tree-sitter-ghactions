@@ -57,5 +57,9 @@
     "lint": "eslint --max-warnings 0 grammar.js",
     "typecheck": "tsc --noEmit",
     "test": "node --test bindings/node/*_test.js"
+  },
+  "allowScripts": {
+    "tree-sitter": true,
+    "tree-sitter-cli": true
   }
 }
