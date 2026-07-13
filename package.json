@@ -39,7 +39,7 @@
     "eslint": "^10.4.0",
     "@eslint/js": "^10.0.1",
     "eslint-config-treesitter": "^1.0.2",
-    "globals": "^17.6.0",
+    "globals": "^17.7.0",
     "typescript": "^6.0.3"
   },
   "peerDependencies": {
