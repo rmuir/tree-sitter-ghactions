@@ -14,7 +14,7 @@ concurrency:
 
 jobs:
   github:
-    uses: tree-sitter/workflows/.github/workflows/release.yml@cc03699ad21049475b5762cd1c38a35146691e85
+    uses: tree-sitter/workflows/.github/workflows/release.yml@10c66d66e558b37df92e2a8ec5321218a6547b04
     permissions:
       contents: write # create github release
       id-token: write # deploy
@@ -23,7 +23,7 @@ jobs:
       abi-version: 15
       generate: false
   crates:
-    uses: tree-sitter/workflows/.github/workflows/package-crates.yml@cc03699ad21049475b5762cd1c38a35146691e85
+    uses: tree-sitter/workflows/.github/workflows/package-crates.yml@10c66d66e558b37df92e2a8ec5321218a6547b04
     permissions:
       id-token: write # deploy
     secrets:
@@ -32,7 +32,7 @@ jobs:
       abi-version: 15
       generate: false
   pypi:
-    uses: tree-sitter/workflows/.github/workflows/package-pypi.yml@216133f5cb4469b112c5e83415869e58b25c353a
+    uses: tree-sitter/workflows/.github/workflows/package-pypi.yml@10c66d66e558b37df92e2a8ec5321218a6547b04
     permissions:
       id-token: write # deploy
     secrets:
@@ -41,7 +41,7 @@ jobs:
       abi-version: 15
       generate: false
   npm:
-    uses: tree-sitter/workflows/.github/workflows/package-npm.yml@cc03699ad21049475b5762cd1c38a35146691e85
+    uses: tree-sitter/workflows/.github/workflows/package-npm.yml@10c66d66e558b37df92e2a8ec5321218a6547b04
     permissions:
       id-token: write # deploy
     secrets:
