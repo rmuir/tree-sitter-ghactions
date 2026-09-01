@@ -60,7 +60,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Set up tree-sitter
-        uses: tree-sitter/setup-action/cli@1868a545ffb91bdc221d14a168b5b6d8de4a28b3 # master
+        uses: tree-sitter/setup-action/cli@49f8c1f20b60102eae8c033bb7c7f6cd056f6086 # master
         with:
           tree-sitter-ref: ${{ env.TREE_SITTER_VERSION }}
       - name: Run parser and binding tests
@@ -87,7 +87,7 @@ jobs:
           persist-credentials: false
 
       - name: Run rumdl
-        uses: rvben/rumdl@d4b387e11401873129035f3ed1ade1395ef09632 # v0.2.43
+        uses: rvben/rumdl@50dbfef7cf08f1d28633b684c0884490a63094e3 # v0.2.60
 
   fuzz:
     name: Fuzz scanner
@@ -111,7 +111,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Set up tree-sitter
-        uses: tree-sitter/setup-action/cli@1868a545ffb91bdc221d14a168b5b6d8de4a28b3 # master
+        uses: tree-sitter/setup-action/cli@49f8c1f20b60102eae8c033bb7c7f6cd056f6086 # master
         with:
           tree-sitter-ref: ${{ env.TREE_SITTER_VERSION }}
       - name: Build parser
