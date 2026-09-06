@@ -1,0 +1,94 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oxc-project/oxc/main/npm/oxlint/configuration_schema.json",
+  "ignorePatterns": [
+    "**/*",
+    "!grammar.js"
+  ],
+  "options": {
+    "typeAware": true,
+    "typeCheck": true,
+    "denyWarnings": true
+  },
+  "globals": {
+    "alias": "readonly",
+    "choice": "readonly",
+    "field": "readonly",
+    "grammar": "readonly",
+    "optional": "readonly",
+    "prec": "readonly",
+    "repeat": "readonly",
+    "repeat1": "readonly",
+    "reserved": "readonly",
+    "seq": "readonly",
+    "token": "readonly"
+  },
+  "categories": {
+    "correctness": "error",
+    "pedantic": "warn",
+    "perf": "warn",
+    "restriction": "warn",
+    "style": "warn",
+    "suspicious": "warn"
+  },
+  "rules": {
+    "capitalized-comments": [
+      "off"
+    ],
+    "id-length": [
+      "off"
+    ],
+    "init-declarations": [
+      "off"
+    ],
+    "func-style": [
+      "warn",
+      "declaration"
+    ],
+    "one-var": [
+      "off"
+    ],
+    "no-implicit-globals": [
+      "off"
+    ],
+    "no-inline-comments": [
+      "off"
+    ],
+    "no-ternary": [
+      "off"
+    ],
+    "no-unused-vars": [
+      "error",
+      {
+        "varsIgnorePattern": "^_",
+        "argsIgnorePattern": "^_"
+      }
+    ],
+    "no-underscore-dangle": [
+      "off"
+    ],
+    "prefer-named-capture-group": [
+      "off"
+    ],
+    "require-unicode-regexp": [
+      "off"
+    ],
+    "oxc/no-async-await": [
+      "off"
+    ],
+    "oxc/no-optional-chaining": [
+      "off"
+    ],
+    "prefer-readonly-parameter-types": [
+      "off"
+    ],
+    "sort-keys": [
+      "off"
+    ],
+    "unicorn/max-nested-calls": [
+      "off"
+    ],
+    "unicorn/prefer-module": [
+      "off"
+    ]
+  }
+}
