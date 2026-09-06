@@ -42,9 +42,9 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
       - name: Install modules
         run: npm ci --legacy-peer-deps
-      - name: Run tsc
+      - name: Type-check grammar
         run: npm run typecheck
-      - name: Run ESLint
+      - name: Lint grammar
         run: npm run lint
   test:
     name: Test parser
