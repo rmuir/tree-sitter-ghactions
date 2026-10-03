@@ -66,6 +66,9 @@
     "no-underscore-dangle": [
       "off"
     ],
+    "no-use-before-define": [
+      "off"
+    ],
     "prefer-named-capture-group": [
       "off"
     ],
