@@ -36,7 +36,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Set up Node.js
-        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           cache: npm
           node-version: ${{ env.NODE_VERSION }}
@@ -60,7 +60,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Set up tree-sitter
-        uses: tree-sitter/setup-action/cli@49f8c1f20b60102eae8c033bb7c7f6cd056f6086 # master
+        uses: tree-sitter/setup-action/cli@faab9a23fa6195da0f1cf868219cc1e89f238d3d # master
         with:
           tree-sitter-ref: ${{ env.TREE_SITTER_VERSION }}
       - name: Run parser and binding tests
@@ -87,7 +87,7 @@ jobs:
           persist-credentials: false
 
       - name: Run rumdl
-        uses: rvben/rumdl@bb84a49a85625b31ecf6c3e58b7bca7c75fbfefb # v0.2.77
+        uses: rvben/rumdl@19006897519812a2fdc508314b34738e5c281233 # v0.3.0
 
   fuzz:
     name: Fuzz scanner
@@ -111,7 +111,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Set up tree-sitter
-        uses: tree-sitter/setup-action/cli@49f8c1f20b60102eae8c033bb7c7f6cd056f6086 # master
+        uses: tree-sitter/setup-action/cli@faab9a23fa6195da0f1cf868219cc1e89f238d3d # master
         with:
           tree-sitter-ref: ${{ env.TREE_SITTER_VERSION }}
       - name: Build parser
